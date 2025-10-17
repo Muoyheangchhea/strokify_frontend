@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Strokify · Symptom Detector</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="Assets/css/style.css" />
+    <script src="Assets/js/sd.js" defer></script>
+    <script src="Assets/js/language-switcher.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <link id="favicon" rel="icon" href="./Assets/img/icon/strokify_icon_no_title.png" type="image/png">
+</head>
+
+<body>
+    <div class="main-container symptom-wrap">
+        <!-- top bar -->
+        <header class="sd-appbar">
+            <button class="sd-icon-btn" type="button" onclick="history.back()" aria-label="Go back">‹</button>
+            <h1 data-key="symptomDetectorTitle">Symptom Detector</h1>
+            <span class="sd-appbar-spacer" aria-hidden="true"></span>
+        </header>
+
+        <!-- cute header area -->
+        <section class="sd-hero">
+            <img src="Assets/img/feature/symptom_detector.png" alt="" class="sd-hero-mascot" />
+            <div class="sd-hero-bubble" data-key="heroBubbleStep3">Let’s continue with your medical factors…</div>
+        </section>
+
+        <!-- steps -->
+        <div class="sd-steps">
+            <div class="sd-steps-row">
+                <span data-key="stepProgressStep3">Step 3/3</span>
+                <span data-key="stepTitleStep3">Medical Factors</span>
+            </div>
+            <div class="sd-progress">
+                <div class="sd-progress-fill" style="width:100%"></div>
+            </div>
+        </div>
+
+        <!-- form card -->
+        <form id="medicalForm" class="sd-card" novalidate>
+            <fieldset class="sd-qa">
+                <legend class="visually-hidden">Medical questions</legend>
+
+                <div class="sd-q-first">
+                    <label class="sd-q-label">
+                        <img src="Assets/img/sd/hypertension.png" alt="" />
+                        <span data-key="hypertensionQuestion">Have you ever been told by a doctor that you have high blood pressure?</span>
+                        <button type="button" class="info-btn" aria-describedby="tip-hypertension"
+                            aria-label="Info about hypertension">ℹ</button>
+                        <span class="sd-required">*</span>
+                    </label>
+                    <!-- dara change here -->
+                    <select name="hypertension" required style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">
+                        <option value="" disabled selected data-key="selectOption">Select options</option>
+                        <option value="1" data-key="yes">Yes</option>
+                        <option value="0" data-key="no">No</option>
+                    </select>
+                </div>
+                <div id="tip-hypertension" data-key="tipHypertension" class="info-tooltip" hidden>
+                    Choose the option that corresponds to your blood pressure state.
+                </div>
+
+                <div class="sd-q">
+                    <label class="sd-q-label">
+                        <img src="Assets/img/sd/heartdisease.png" alt="" />
+                        <span data-key="heartDiseaseQuestion">Have you ever been told by a doctor that you have any kind of heart disease?</span>
+                        <button type="button" class="info-btn" aria-describedby="tip-heartdisease"
+                            aria-label="Info about heartdisease">ℹ</button>
+                        <span class="sd-required">*</span>
+                    </label>
+                    <select name="heart_disease" required style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">
+                        <option value="" disabled selected data-key="selectOption">Select options</option>
+                        <option value="1" data-key="yes">Yes</option>
+                        <option value="0" data-key="no">No</option>
+                    </select>
+                </div>
+                <div id="tip-heartdisease" data-key="tipHeartDisease" class="info-tooltip" hidden>
+                    Choose the option that corresponds to your heart disease history.
+                </div>
+
+                <!-- Glucose question with conditional input -->
+                <div class="sd-q">
+                    <label class="sd-q-label">
+                        <img src="Assets/img/sd/glucose.png" alt="" />
+                        <span data-key="glucoseQuestion">Have you measured your average blood glucose level?</span>
+                        <button type="button" class="info-btn" aria-describedby="tip-glocose"
+                            aria-label="Info about glucose">ℹ</button>
+                        <span class="sd-required">*</span>
+                    </label>
+                    <select id="glucoseSelect" name="glucose_known" required aria-controls="glucoseGroup"
+                        aria-expanded="false" style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">
+                        <option value="" disabled selected data-key="selectOption">Select options</option>
+                        <option value="yes" data-key="yesKnow">Yes – I know my average glucose level</option>
+                        <option value="no" data-key="noDontKnow">No – I don’t know my average glucose level</option>
+                    </select>
+                    <!-- Hidden until "yes" -->
+                    <div id="glucoseGroup" class="sd-input-unit" hidden>
+                        <input type="number" inputmode="decimal" step="1" min="70" max="400" name="glucose_mgdl"
+                            id="glucoseInput" placeholder="e.g., 95" aria-label="Average glucose (mg/dL)" />
+                        <span class="sd-unit">mg/dL</span>
+                    </div>
+                </div>
+                <div id="tip-glocose" data-key="tipGlucose" class="info-tooltip" hidden>
+                    Choose the option that corresponds to your glocose state (Yes/No). If "Yes", Please clarify the
+                    exact amount of your average glocose level in (mg/dL).
+                </div>
+            </fieldset>
+
+            <!-- actions -->
+            <div class="sd-actions">
+                <a class="sd-btn sd-btn-ghost" href="symptom_detector-2.html" data-key="backBtn">Back</a>
+                <button class="sd-btn sd-btn-primary" type="submit" data-key="submitBtn" style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">Submit</button>
+            </div>
+        </form>
+    </div>
+    <!-- Info Modal -->
+    <div id="infoModal" class="info-modal" hidden>
+        <div class="info-backdrop" data-close></div>
+        <div class="info-dialog" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+            <button class="info-close" type="button" aria-label="Close" data-close>×</button>
+            <div class="info-content" id="infoContent"></div>
+        </div>
+    </div>
+</body>
+
+</html>

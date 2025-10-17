@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Strokify · Symptom Detector</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="Assets/css/style.css" />
+    <script src="Assets/js/language-switcher.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <link id="favicon" rel="icon" href="./Assets/img/icon/strokify_icon_no_title.png" type="image/png">
+</head>
+
+<body>
+    <div class="main-container result-wrap">
+        <header class="sd-appbar">
+            <button class="sd-icon-btn" type="button" onclick="history.back()" aria-label="Go back">‹</button>
+            <h1 data-key="symptomDetectorTitle">Symptom Detector</h1>
+            <span class="sd-appbar-spacer" aria-hidden="true"></span>
+        </header>
+
+        <section class="sd-hero">
+            <img src="Assets/img/feature/symptom_detector.png" alt="" class="sd-hero-mascot" />
+            <div class="sd-hero-bubble" data-key="afterAnalysis">After our analysis…</div>
+        </section>
+
+        <section class="result-card" aria-live="polite">
+            <h3 data-key="yourResult">Your Result shows that:</h3>
+
+            <!-- Fixed SVG gauge with properly proportioned arcs for 0-10%, 10-30%, 30-100% -->
+            <svg class="gauge" viewBox="0 0 140 100" aria-hidden="true">
+                <!-- arcs with correct proportions for risk levels -->
+                <!-- Normal: 0–19% -->
+                <path d="M15 80 A60 60 0 0 1 24 65" fill="none" stroke="#3BAA57" stroke-width="14"
+                    stroke-linecap="round" />
+
+                <!-- Moderate: 20–29% -->
+                <path d="M24 65 A60 60 0 0 1 43 47" fill="none" stroke="#F3C851" stroke-width="14"
+                    stroke-linecap="round" />
+
+                <!-- High: 30–100% -->
+                <path d="M42 48 A60 60 0 0 1 130 80" fill="none" stroke="#D84C4C" stroke-width="14"
+                    stroke-linecap="round" />
+
+                <!-- Needle: corrected to pivot correctly -->
+                <line id="needle" x1="70" y1="70" x2="70" y2="50" stroke="#666" stroke-width="5"
+                    stroke-linecap="round" />
+
+                <!-- Needle base: drawn after needle to cover the base -->
+                <circle cx="70" cy="70" r="6" fill="#666" />
+            </svg>
+            <div class="risk-row">
+                <span data-key="currentRiskLevel">Current Risk Level:</span> <span id="riskValue"
+                    class="risk-value">--%</span>
+            </div>
+            <div id="riskChip" class="risk-chip">—</div>
+
+            <p id="resultMsg" class="result-msg"></p>
+        </section>
+        <div class="sd-actions" id="actions">
+        </div>
+    </div>
+
+    <script>
+        // Load backend result from localStorage
+        const saved = JSON.parse(localStorage.getItem('strokify_result') || '{}');
+
+        // fallback risk = probability*100
+        let risk = isFinite(saved.probability) ? saved.probability * 100 : NaN;
+
+        // fallback to demo value if invalid
+        if (!isFinite(risk)) risk = 41;
+
+        // -------- elements --------
+        const riskValueEl = document.getElementById('riskValue');
+        const chip = document.getElementById('riskChip');
+        const msg = document.getElementById('resultMsg');
+        const actions = document.getElementById('actions');
+        const needle = document.getElementById('needle');
+
+        // -------- map to category --------
+        let category = 'normal';
+        if (risk >= 30) category = 'high';
+        else if (risk >= 20) category = 'moderate';
+
+        // set percentage text
+        riskValueEl.textContent = risk.toFixed(1).replace(/\.0$/, '') + '%';
+
+        // rotate needle: 0% → -110deg, 100% → +110deg
+        const angle = -110 + (risk / 100) * 220;
+        needle.style.transform = `rotate(${angle}deg)`;
+        needle.style.transformOrigin = '70px 70px'; // Match the pivot point
+
+        // set chip + message + actions per category
+        if (category === 'normal') {
+            chip.textContent = 'Normal';
+            chip.className = 'risk-chip normal';
+            chip.setAttribute('data-key', 'riskNormal');
+            riskValueEl.style.color = '#1b7f2a';
+            msg.textContent = saved.message || "You're in good health.";
+            msg.setAttribute('data-key', 'msgNormal');
+            actions.innerHTML = `<a class="sd-btn sd-done-btn-ghost" href="index.html" data-key="doneButton">Done</a>`;
+        } else if (category === 'moderate') {
+            chip.textContent = 'Moderate';
+            chip.className = 'risk-chip moderate';
+            chip.setAttribute('data-key', 'riskModerate');
+            riskValueEl.style.color = '#D4A21D';
+            msg.textContent = saved.message || "Moderate risk detected. Please be careful.";
+            msg.setAttribute('data-key', 'msgModerate');
+            actions.innerHTML = `<a class="sd-btn sd-done-btn-ghost" href="index.html" data-key="doneButton">Done</a>`;
+        } else {
+            chip.textContent = 'High';
+            chip.className = 'risk-chip high';
+            riskValueEl.style.color = '#c62828';
+            chip.setAttribute('data-key', 'riskHigh');
+            msg.textContent = saved.message || "High risk detected! Seek medical help immediately.";
+            msg.setAttribute('data-key', 'msgHigh');
+            actions.innerHTML = `
+      <a class="sd-btn sd-btn-ghost" href="index.html" data-key="doneButton">Done</a>
+      <a class="sd-btn sd-btn-primary" href="fast.html" data-key="fastBtn">F.A.S.T.</a>
+    `;
+        }
+
+        // persist what we displayed
+        localStorage.setItem('strokify_result_display', JSON.stringify({
+            prediction: saved.prediction,
+            probability: saved.probability,
+            risk,
+            risk_level: saved.risk_level || category,
+            message: saved.message,
+            patientId: saved.patientId
+        }));
+
+        localStorage.removeItem('strokify_lifestyle');
+        localStorage.removeItem('strokify_medical');
+        localStorage.removeItem('strokify_result');
+        localStorage.removeItem('strokify_result_display');
+
+
+    </script>
+
+</body>
+
+</html>

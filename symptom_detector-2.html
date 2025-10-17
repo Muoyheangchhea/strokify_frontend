@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Strokify · Symptom Detector</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="Assets/js/sd.js" defer></script>
+    <link rel="stylesheet" href="Assets/css/style.css" />
+    <script src="Assets/js/language-switcher.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <link id="favicon" rel="icon" href="./Assets/img/icon/strokify_icon_no_title.png" type="image/png">
+</head>
+
+<body>
+    <div class="main-container symptom-wrap">
+        <!-- top bar -->
+        <header class="sd-appbar">
+            <button class="sd-icon-btn" type="button" onclick="history.back()" aria-label="Go back">‹</button>
+            <h1 data-key="symptomDetectorTitle">Symptom Detector</h1>
+            <span class="sd-appbar-spacer" aria-hidden="true"></span>
+        </header>
+
+        <!-- cute header area -->
+        <section class="sd-hero">
+            <img src="Assets/img/feature/symptom_detector.png" alt="" class="sd-hero-mascot" />
+            <div class="sd-hero-bubble" data-key="heroBubbleStep2">Keep going with your lifestyle factors …</div>
+        </section>
+
+        <!-- steps -->
+        <div class="sd-steps">
+            <div class="sd-steps-row">
+                <span data-key="stepProgressStep2">Step 2/3</span>
+                <span data-key="stepTitleStep2">Lifestyle Factors</span>
+            </div>
+            <div class="sd-progress">
+                <div class="sd-progress-fill" style="width:66.66%"></div>
+            </div>
+        </div>
+
+        <!-- form card -->
+        <form id="lifestyleForm" class="sd-card" novalidate>
+
+            <!-- SELECT QUESTIONS -->
+            <fieldset class="sd-qa">
+                <div class="sd-q-first">
+                    <label class="sd-q-label">
+                        <img src="Assets/img/sd/smoke.png" alt="" />
+                        <span data-key="smokeQuestion">Have you smoked over the past year?</span>
+                        <button type="button" class="info-btn" aria-describedby="tip-smoke"
+                            aria-label="Info about smoke">ℹ</button>
+                        <span class="sd-required">*</span>
+                    </label>
+                    <!-- dara change here -->
+                    <select name="smoke" required style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">
+                        <option value="" data-key="selectOption" disabled selected>Select options</option>
+                        <option value="0" data-key="neverSmoked">Never smoked</option>
+                        <option value="1" data-key="smokes">Smokes</option>
+                    </select>
+
+                </div>
+                <div id="tip-smoke" data-key="tipSmoke" class="info-tooltip" hidden>
+                    Choose the option that corresponds to your smoking state.
+                </div>
+
+                <div class="sd-q">
+                    <label class="sd-q-label">
+                        <img src="Assets/img/sd/work.png" alt="" />
+                        <span data-key="workQuestion">What is your main type of work?</span>
+                        <button type="button" class="info-btn" aria-describedby="tip-worktype"
+                            aria-label="Info about worktype">ℹ</button>
+                        <span class="sd-required">*</span>
+                    </label>
+                    <!-- dara change here -->
+                    <select name="work" required style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">
+                        <option value="" data-key="selectWorkType" disabled selected>Select work type</option>
+                        <option value="Never_worked" data-key="neverWorked">Never_worked</option>
+                        <option value="children" data-key="children">children</option>
+                        <option value="Govt_job" data-key="govtJob">Govt_job</option>
+                        <option value="Self_employed" data-key="selfEmployed">Self-employed</option>
+                        <option value="Private" data-key="privateJob">Private</option>
+                    </select>
+
+                </div>
+                <div id="tip-worktype" data-key="tipWork" class="info-tooltip" hidden>
+                    Choose the option that corresponds to your work type state.
+                </div>
+                <div class="sd-q">
+                    <label class="sd-q-label">
+                        <img src="Assets/img/sd/residence.png" alt="" />
+                        <span data-key="residenceQuestion">What type of residence do you currently live in?</span>
+                        <button type="button" class="info-btn" aria-describedby="tip-residence">ℹ</button>
+                        <span class="sd-required">*</span>
+
+                    </label>
+                    <!-- dara change here -->
+                    <select name="residence" required style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">
+                        <option value="" disabled selected data-key="selectOption">Select options</option>
+                        <option value="1" data-key="urban">Urban</option>
+                        <option value="0" data-key="rural">Rural</option>
+                    </select>
+
+                </div>
+                <div id="tip-residence" data-key="tipResidence" class="info-tooltip" hidden>
+                    Choose the option that corresponds to your residence state.
+                </div>
+            </fieldset>
+
+            <!-- actions -->
+            <div class="sd-actions">
+                <a class="sd-btn sd-btn-ghost" href="symptom_detector-1.html" data-key="backBtn">Back</a>
+                <button class="sd-btn sd-btn-primary" href="symptom_detector-3.html" type="submit" data-key="nextBtn" style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">Next</button>
+            </div>
+        </form>
+    </div>
+    <!-- Info Modal -->
+    <div id="infoModal" class="info-modal" hidden>
+        <div class="info-backdrop" data-close></div>
+        <div class="info-dialog" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+            <button class="info-close" type="button" aria-label="Close" data-close>×</button>
+            <div class="info-content" id="infoContent"></div>
+        </div>
+    </div>
+</body>
+
+</html>

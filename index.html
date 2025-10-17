@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strokify</title>
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- khmer font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <!--  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="Assets/js/script.js"></script>
+    <script src="Assets/js/language-switcher.js"></script>
+    <link id="favicon" rel="icon" href="./Assets/img/icon/strokify_icon_no_title.png" type="image/png">
+</head>
+
+<body>
+
+    <!-- Top Header  -->
+    <div class="main-container">
+
+        <div class="top-header-bg">
+            <div class="header-greeting">
+                <div class="profile-info">
+                    <img src="Assets/img/feature/sreysart.jpg" alt="Profile Picture" class="profile-pic">
+                    <div class="greeting-text">
+                        <h2>
+                            <span data-key="greeting">Hello, </span>
+                            <span>Putrea !</span>
+                        </h2>
+                        <p data-key="greetingSubtext">Hope You're Having a Great Day!</p>
+                    </div>
+                </div>
+                <div class="notifications">
+                    <div class="language-switcher" onclick="Translation()">
+                        <i class="fas fa-globe"></i>
+                        <span class="lang-text" data-key="langCode">EN</span>
+                    </div>
+                    <span class="gems">
+                        💎
+                        <span class="tooltip" data-key="gemsTooltip">Complete tasks to earn diamonds.</span>
+                    </span>
+                    <span class="bell" onclick="window.location.href='notifications.html'">🔔<span
+                            class="notification-badge">3</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Health Status Card -->
+
+        <div class="health-card">
+            <div class="card-header">
+                <h3>
+                    <span data-key="healthStatus">Health Status: </span>
+                    <span class="excellent" data-key="statusExcellent">Excellent</span>
+                </h3>
+            </div>
+
+            <div class="health-metrics">
+                <div class="metric-item">
+                    <img src="Assets/img/icon/heart_rate.png" alt="Heart rate icon">
+                    <p>
+                        <span data-key="heartRate">Heart Rate: </span>
+                        <strong style="color: #C32235;"> 80 bpm</strong>
+                    </p>
+                </div>
+                <div class="metric-item">
+                    <img src="Assets/img/icon/blood_pressure.png" alt="Blood pressure icon">
+                    <p>
+                        <span data-key="bloodPressure">Blood Pressure: </span>
+                        <strong style="color: #C32235;"> 118 / 76 mmHg</strong>
+                    </p>
+                </div>
+                <div class="metric-item">
+                    <img src="Assets/img/icon/body_mass_index.png" alt="BMI icon">
+                    <p>
+                        <span data-key="Bmi">Body Mass Index (BMI): </span>
+                        <strong style="color: #C32235;"> 20 kg/m²</strong>
+                    </p>
+                </div>
+            </div>
+            <img src="Assets/img/feature/cheer_brain.png" alt="Brain illustration" class="brain-img">
+        </div>
+
+        <!-- Feature Section -->
+
+        <div class="health-content-wrapper">
+            <div class="health-content-section">
+                <div class="content-row">
+                    <a href="symptom_detector-1.html" class="content-card-link">
+                        <div class="content-card">
+                            <img src="Assets/img/feature/symptom_detector.png" alt="Symptom Detector">
+                            <p data-key="symptomDetectorTitle">Symptom Detector</p>
+                        </div>
+                    </a>
+                    <a href="health-advisor.html" class="content-card-link">
+                        <div class="content-card">
+                            <img src="Assets/img/feature/health_advisor.png" alt="Health Advisor">
+                            <p data-key="pageTitle">Health Advisor</p>
+                        </div>
+                    </a>
+                    <a href="lifesyn.html" class="content-card-link">
+                        <div class="content-card lifesyn-card">
+                            <img src="Assets/img/feature/Lifesyn.png" alt="Lifesyn">
+                            <p data-key="lifeSyntitle">Lifesyn</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Healthcare Contents -->
+
+        <div class="section-title" data-key="healthcareContents">Healthcare Contents</div>
+        <div class="carousel-container">
+            <div class="news-list">
+                <a href="https://www.who.int/westernpacific/newsroom/feature-stories/item/1-in-5-cambodian-adults-are-at-risk-of-stroke-as-noncommunicable-disease-risks-increase"
+                    class="news-link">
+                    <div class="news-card">
+                        <img src="https://s3.ams.com.kh/education/2023/10/1-20.png" alt="New2">
+                        <p>ជំងឺគ្រោះថ្នាក់សរសៃឈាមខួរក្បាលឬស្ត្រូកជាមូលហេតុចម្បងទីមួយនៃ <br>
+                            ពិការភាពនៅទូទាំងសកលលោកជាពិសេសលើមនុស្សដែលមានអាយុ...
+                        </p>
+                    </div>
+                </a>
+                <a href="https://www.royalphnompenhhospital.com/health-tip-article-detail/41" class="news-link">
+                    <div class="news-card">
+                        <img src="https://www.royalphnompenhhospital.com/royalpp/storage/app/uploads/2/2021-08-19/banner.jpg"
+                            alt="New5">
+                        <p>វេជ្ជបណ្ឌិតហុក តុលា៖ ប្រាប់វិធីការពារជំងឺគ្រោះថ្នាក់​សរសៃ <br> ឈាមខួរក្បាល ឬជំងឺស្ត្រូក...
+                        </p>
+                    </div>
+                </a>
+                <a href="https://hellokrupet.com/%E1%9E%81%E1%9E%BD%E1%9E%9A%E1%9E%80%E1%9F%92%E1%9E%94%E1%9E%B6%E1%9E%9B%E1%9E%93%E1%9E%B7%E1%9E%84%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%96%E1%9F%90%E1%9E%93%E1%9F%92%E1%9E%92%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%9F%E1%9E%B6%E1%9E%91/%E1%9E%82%E1%9F%92%E1%9E%9A%E1%9F%84%E1%9F%87%E1%9E%90%E1%9F%92%E1%9E%93%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%9F%E1%9E%9A%E1%9E%9F%E1%9F%83%E1%9E%88%E1%9E%B6%E1%9E%98/188189/"
+                    class="news-link">
+                    <div class="news-card">
+                        <img src="https://i.ytimg.com/vi/oy4Rl61exAQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBMAxfVnb4kEKRBGqp4U4M_ZSfY7Q"
+                            alt="New4">
+                        <p>ការដឹងសញ្ញាព្រមានជំងឺគ្រោះថ្នាក់សរសៃឈាមខួរក្បាល (Stroke) <br> អាចជួយយើងចៀសផុតពីពិការភាព...
+                        </p>
+                    </div>
+                </a>
+                <a href="https://www.royalphnompenhhospital.com/health-tip-article-detail/42" class="news-link">
+                    <div class="news-card">
+                        <img src="Assets/img/news/news2.png" alt="New3">
+                        <p>វេជ្ជបណ្ឌិតហុក តុលា៖ វិធីជួយសង្គ្រោះជីវិត បើមានអ្នកកើតជំងឺស្ត្រូក <br> ភ្លាមៗ។ ជំងឺស្ត្រូក
+                            មានអត្រាកើតឡើងខ្លាំងគួរឱ្យកត់សម្គាល់...
+                        </p>
+                    </div>
+                </a>
+                <a href="https://sbm.news/articles/6479b0cad54877eac54a88c8" class="news-link">
+                    <div class="news-card">
+                        <img src="https://sbm.news/api/files/images/sbm-retLnZWSyGfHjEwhEBj-f.jpg" alt="New1">
+                        <p>គិតត្រឹមថ្ងៃទី១មិថុនា យុទ្ធនាការ«១ម៉ឺនរៀល១ម៉ឺននាក់» សម្រាប់កុមារ <br>
+                            កម្ពុជាទទួលបានថវិកាជាងកន្លះលានដុល្លារ។
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Dots Navigation -->
+
+        <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <!-- Hospital -->
+
+        <div class="section-title" data-key="specializedHospital">Specialized Stroke Hospital</div>
+        <div class="hospital-card-background">
+            <div class="hospital-carousel-container">
+                <a class="carousel-arrow left"><i class="fas fa-chevron-left"></i></a>
+                <div class="hospital-list">
+                    <a href="#" class="hospital-button-link">
+                        <img src="https://www.sunrise-hs.com.kh/assets/images/httpwww.sunrise-hs.comindex.phpabout-us.png"
+                            alt="Sunrise Japan Hospital">
+                        <p>Sunrise Japan Hopital</p>
+                    </a>
+                    <a href="#" class="hospital-button-link">
+                        <img src="https://www.royalphnompenhhospital.com/royalpp/storage/app/uploads/3/2020-12/rhp_01.jpg"
+                            alt="Royal Phnom Penh Hospital">
+                        <p>Royal Phnom Penh Hospital</p>
+                    </a>
+                    <a href="#" class="hospital-button-link">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRA2lw4dlMsaMruSBeZJzS8NL5hsgKEwPLMw&s"
+                            alt="Royal Angkor Hospital">
+                        <p>Royal Angkor Hospital</p>
+                    </a>
+                    <a href="#" class="hospital-button-link">
+                        <img src="https://i.ytimg.com/vi/22A24o77InE/maxresdefault.jpg" alt="Calmette Hospital">
+                        <p>Calmette Hospital</p>
+                    </a>
+                    <a href="#" class="hospital-button-link">
+                        <img src="https://c8.alamy.com/comp/2HCDTA6/phnom-penh-27th-dec-2021-photo-taken-on-dec-27-2021-shows-the-cambodia-china-friendship-medical-building-in-phnom-penh-capital-of-cambodia-a-china-aided-medical-building-at-the-cambodia-china-friendship-preah-kossamak-hospital-in-phnom-penh-successfully-passed-the-completion-inspection-on-dec-28-the-contractor-china-state-construction-engineering-corporation-ltd-said-in-a-news-release-credit-zhang-chao-xinhuaalamy-live-news-2HCDTA6.jpg"
+                            alt="Preah Kossamak Hospital">
+                        <p>Preah Kossamak Hospital</p>
+                    </a>
+                </div>
+                <a class="carousel-arrow right"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

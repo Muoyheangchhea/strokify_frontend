@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Advisor · Strokify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <script src="Assets/js/language-switcher.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <link id="favicon" rel="icon" href="./Assets/img/icon/strokify_icon_no_title.png" type="image/png">
+    <style>
+        :root {
+            --bg-color: #FFF2F6;
+            --card-gradient: linear-gradient(to bottom, #FEBCD0 -17%, #C32235 64%);
+            --pink-light: #FFDDE2;
+            --text-dark: #333;
+            --text-light: #fff;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins',"Kantumruy Pro", sans-serif;
+            background: var(--bg-color);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .under-development {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            margin: 20px 0;
+            border-top: 4px solid #C32235;
+        }
+
+        .under-development img {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+        }
+
+        .under-development h2 {
+            color: #C32235;
+            margin-bottom: 15px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .under-development p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .back-btn {
+            background: var(--card-gradient);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(195, 34, 53, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="under-development">
+            <img src="Assets/img/feature/health_advisor.png" alt="Health Advisor">
+            <h2 data-key="pageTitle">Health Advisor</h2>
+            <p data-key="underDevelopmentText1">This feature is currently <b>under development</b>. Our team is working
+                hard to bring you personalized health advice and recommendations.</p>
+            <p data-key="underDevelopmentText2">Please check back soon for updates!</p>
+            <a href="index.html" class="sd-btn sd-btn-primary" data-key="backToHome">Back to Home</a>
+        </div>
+    </div>
+</body>
+
+</html>

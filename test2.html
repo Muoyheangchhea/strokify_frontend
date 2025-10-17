@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strokify - Server Configuration Debugger</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .issue-card {
+            background: rgba(231, 76, 60, 0.2);
+            border-left: 4px solid #e74c3c;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .issue-card h2 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        
+        .solution-card {
+            background: rgba(46, 204, 113, 0.2);
+            border-left: 4px solid #2ecc71;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .solution-card h2 {
+            color: #2ecc71;
+            margin-bottom: 15px;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .file-structure {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .file-item {
+            padding: 5px 0;
+        }
+        
+        .indent-1 {
+            padding-left: 20px;
+        }
+        
+        .indent-2 {
+            padding-left: 40px;
+        }
+        
+        .test-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .test-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        
+        .log-entry {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .success {
+            background: rgba(46, 204, 113, 0.2);
+            border-left: 3px solid #2ecc71;
+        }
+        
+        .error {
+            background: rgba(231, 76, 60, 0.2);
+            border-left: 3px solid #e74c3c;
+        }
+        
+        .timestamp {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Strokify Server Configuration Debugger</h1>
+        <p class="subtitle">Fixing API endpoint configuration issues</p>
+        
+        <div class="issue-card">
+            <h2>Issue Identified</h2>
+            <p>Your server is running but returning 404 errors, which means:</p>
+            <ul>
+                <li>The Express server is running correctly</li>
+                <li>But your API routes are not properly configured</li>
+                <li>The <code>/api/symptoms/detect</code> endpoint doesn't exist</li>
+            </ul>
+        </div>
+        
+        <div class="solution-card">
+            <h2>Solution</h2>
+            <p>You need to check your route configuration. Here's what your file structure should look like:</p>
+            
+            <div class="file-structure">
+                <div class="file-item">strokify-backend/</div>
+                <div class="file-item indent-1">server.js <span style="color: #2ecc71;">✓</span></div>
+                <div class="file-item indent-1">routes/</div>
+                <div class="file-item indent-2">symptomRoutes.js <span style="color: #e74c3c;">❌ Check this file</span></div>
+                <div class="file-item indent-1">controllers/</div>
+                <div class="file-item indent-2">symptomController.js <span style="color: #e74c3c;">❌ Check this file</span></div>
+            </div>
+            
+            <h3>1. Check your symptomRoutes.js</h3>
+            <p>It should look like this:</p>
+            <div class="code-block">
+const express = require('express');
+const router = express.Router();
+const { detectSymptoms } = require('../controllers/symptomController');
+
+// POST /api/symptoms/detect
+router.post('/detect', detectSymptoms);
+
+module.exports = router;
+            </div>
+            
+            <h3>2. Check your symptomController.js</h3>
+            <p>It should look like this:</p>
+            <div class="code-block">
+const { predictStroke } = require('../services/aiPredictor');
+
+const detectSymptoms = async (req, res) => {
+    try {
+        const patientData = req.body;
+        const result = await predictStroke(patientData);
+        res.json(result);
+    } catch (error) {
+        console.error('Error in detectSymptoms:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+module.exports = {
+    detectSymptoms
+};
+            </div>
+            
+            <h3>3. Verify your server.js</h3>
+            <p>Your server.js looks correct, but let's double-check the routes import:</p>
+            <div class="code-block">
+const express = require("express");
+const cors = require('cors');
+const dotenv = require("dotenv");
+const connectDB = require("./config/dbconnect");
+const symptomRoutes = require("./routes/symptomRoutes");
+
+dotenv.config();
+connectDB();
+
+const app = express();
+
+// Middleware
+app.use(express.json());
+app.use(cors());
+
+// Routes - MAKE SURE THIS LINE IS CORRECT
+app.use("/api/symptoms", symptomRoutes);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+});
+            </div>
+        </div>
+        
+        <button id="testConnection" class="test-btn">Test Basic Server Connection</button>
+        
+        <div id="testResult" class="result">
+            <h2>Test Results</h2>
+            <div id="resultContent"></div>
+        </div>
+        
+        <div class="solution-card">
+            <h2>Quick Fix</h2>
+            <p>Try adding a simple test endpoint to your server.js to verify it's working:</p>
+            <div class="code-block">
+// Add this to your server.js right before app.listen()
+
+// Test endpoint
+app.get('/api/test', (req, res) => {
+    res.json({ message: 'Server is working!' });
+});
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+});
+            </div>
+            
+            <p>After adding these, restart your server and test these endpoints:</p>
+            <ul>
+                <li><code>http://localhost:5000/health</code> - Should return "OK"</li>
+                <li><code>http://localhost:5000/api/test</code> - Should return JSON message</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('testConnection').addEventListener('click', async function() {
+            const testBtn = this;
+            testBtn.textContent = 'Testing...';
+            testBtn.disabled = true;
+            
+            const resultContent = document.getElementById('resultContent');
+            resultContent.innerHTML = '';
+            
+            function addLog(message, type = 'info') {
+                const logEntry = document.createElement('div');
+                logEntry.className = `log-entry ${type}`;
+                logEntry.innerHTML = `
+                    <div class="timestamp">${new Date().toLocaleTimeString()}</div>
+                    <div>${message}</div>
+                `;
+                resultContent.appendChild(logEntry);
+            }
+            
+            // Test basic server connection
+            addLog('Testing server health...');
+            
+            try {
+                // Test 1: Health endpoint (if you add it)
+                try {
+                    const healthResponse = await fetch('http://localhost:5000/health');
+                    if (healthResponse.status === 200) {
+                        addLog('✅ Health endpoint is working', 'success');
+                    } else {
+                        addLog('⚠️ Health endpoint not configured', 'info');
+                    }
+                } catch (e) {
+                    addLog('⚠️ Health endpoint not available', 'info');
+                }
+                
+                // Test 2: Root endpoint
+                try {
+                    const rootResponse = await fetch('http://localhost:5000/');
+                    addLog(`Root endpoint returned status: ${rootResponse.status}`, 'info');
+                } catch (e) {
+                    addLog('❌ Cannot connect to server root', 'error');
+                }
+                
+                // Test 3: Add a test endpoint
+                addLog('Testing if we can add a temporary endpoint...');
+                
+                // Test if server is accepting connections at all
+                try {
+                    const testResponse = await fetch('http://localhost:5000', {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'text/plain'
+                        }
+                    });
+                    addLog(`Server responded with status: ${testResponse.status}`, 'info');
+                } catch (e) {
+                    addLog(`❌ Server connection failed: ${e.message}`, 'error');
+                }
+                
+            } catch (error) {
+                addLog(`❌ Unexpected error: ${error.message}`, 'error');
+            }
+            
+            addLog('Diagnosis complete. Check your route configuration files.', 'info');
+            document.getElementById('testResult').style.display = 'block';
+            testBtn.textContent = 'Test Complete';
+            testBtn.disabled = false;
+        });
+    </script>
+</body>
+</html>

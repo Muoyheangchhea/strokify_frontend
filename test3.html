@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strokify - Controller-Route Mismatch Fix</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 900px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .issue-card {
+            background: rgba(231, 76, 60, 0.2);
+            border-left: 4px solid #e74c3c;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .issue-card h2 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        
+        .solution-card {
+            background: rgba(46, 204, 113, 0.2);
+            border-left: 4px solid #2ecc71;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .solution-card h2 {
+            color: #2ecc71;
+            margin-bottom: 15px;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+        
+        .mismatch {
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px solid #e74c3c;
+        }
+        
+        .match {
+            background: rgba(46, 204, 113, 0.2);
+            border: 1px solid #2ecc71;
+        }
+        
+        .test-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .test-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .log-entry {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .success {
+            background: rgba(46, 204, 113, 0.2);
+            border-left: 3px solid #2ecc71;
+        }
+        
+        .error {
+            background: rgba(231, 76, 60, 0.2);
+            border-left: 3px solid #e74c3c;
+        }
+        
+        .info {
+            background: rgba(52, 152, 219, 0.2);
+            border-left: 3px solid #3498db;
+        }
+        
+        .timestamp {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #f39c12;
+            background: rgba(243, 156, 18, 0.1);
+        }
+        
+        .copy-btn {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.8rem;
+        }
+        
+        .copy-btn:hover {
+            background: #34495e;
+        }
+        
+        .highlight {
+            background: rgba(231, 76, 60, 0.3);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Strokify Controller-Route Mismatch Fix</h1>
+        <p class="subtitle">Fixing the function name mismatch between controller and routes</p>
+        
+        <div class="issue-card">
+            <h2>Issue Identified</h2>
+            <p>Your controller exports <span class="highlight">predictStrokeController</span> but your routes file is trying to import <span class="highlight">detectSymptoms</span>.</p>
+            <p>This name mismatch is causing the 404 error because the route handler doesn't exist.</p>
+        </div>
+        
+        <div class="solution-card">
+            <h2>Solution</h2>
+            
+            <div class="step">
+                <h3>Option 1: Update your routes file (Recommended)</h3>
+                <p>Change your <code>routes/symptomRoutes.js</code> to use the correct function name:</p>
+                <div class="code-block match" id="routesFix">
+// routes/symptomRoutes.js - FIXED VERSION
+const express = require('express');
+const router = express.Router();
+const { predictStrokeController } = require('../controllers/symptomController');
+
+// POST /api/symptoms/detect
+router.post('/detect', predictStrokeController);
+
+module.exports = router;
+                </div>
+                <button class="copy-btn" onclick="copyCode('routesFix')">Copy Code</button>
+            </div>
+            
+            <div class="step">
+                <h3>Option 2: Update your controller file</h3>
+                <p>Alternatively, you could change your controller to export the expected function name:</p>
+                <div class="code-block" id="controllerFix">
+// controllers/symptomController.js - ALTERNATIVE FIX
+// ... your existing code ...
+
+// Change the export to match what routes expects
+module.exports = { 
+  detectSymptoms: predictStrokeController 
+};
+                </div>
+                <button class="copy-btn" onclick="copyCode('controllerFix')">Copy Code</button>
+                <p class="info">Note: Option 1 is recommended as it's clearer and follows standard naming conventions.</p>
+            </div>
+            
+            <div class="step">
+                <h3>Your Current Controller Code</h3>
+                <p>Your controller exports <code>predictStrokeController</code>:</p>
+                <div class="code-block mismatch">
+// controllers/symptomController.js
+// ... your code ...
+module.exports = { predictStrokeController }; // ← This exports predictStrokeController
+                </div>
+            </div>
+            
+            <div class="step">
+                <h3>Your Current Routes Code (Problem)</h3>
+                <p>Your routes file tries to import <code>detectSymptoms</code>:</p>
+                <div class="code-block mismatch">
+// routes/symptomRoutes.js (PROBLEM)
+const { detectSymptoms } = require('../controllers/symptomController'); 
+// ↑ This tries to import detectSymptoms but it doesn't exist ↑
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-card">
+            <h2>Complete Fixed Server.js</h2>
+            <p>While you're at it, here's the complete server.js with better error handling:</p>
+            <div class="code-block" id="serverJsCode">
+// server.js - Fixed version
+const express = require("express");
+const cors = require('cors');
+const dotenv = require("dotenv");
+const connectDB = require("./config/dbconnect");
+
+dotenv.config();
+connectDB(); // Connect MongoDB
+
+const app = express();
+
+// Middleware
+app.use(express.json());
+app.use(cors());
+
+// Test route to verify server is working
+app.get("/", (req, res) => {
+  res.json({ message: "Strokify API Server is running!" });
+});
+
+// Health check endpoint
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+
+// Import routes
+const symptomRoutes = require("./routes/symptomRoutes");
+
+// Use routes
+app.use("/api/symptoms", symptomRoutes);
+
+// Handle undefined routes
+app.use("*", (req, res) => {
+  res.status(404).json({ error: "Route not found" });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: "Something went wrong!" });
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
+            </div>
+            <button class="copy-btn" onclick="copyCode('serverJsCode')">Copy Code</button>
+        </div>
+        
+        <div class="result">
+            <h2>Test Your Server After Fixing</h2>
+            <div id="resultContent">
+                <p>After making the fixes, test your server:</p>
+            </div>
+            <button id="testServer" class="test-btn">Test Server Configuration</button>
+        </div>
+        
+        <div class="solution-card">
+            <h2>Implementation Steps</h2>
+            <ol>
+                <li>Update your <code>routes/symptomRoutes.js</code> with the fixed code above</li>
+                <li>Optional: Update your <code>server.js</code> with the improved version</li>
+                <li>Restart your server completely (stop with Ctrl+C and restart)</li>
+                <li>Test the endpoints using the button above</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const textArea = document.createElement('textarea');
+            textArea.value = codeElement.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert('Code copied to clipboard!');
+        }
+        
+        document.getElementById('testServer').addEventListener('click', async function() {
+            const testBtn = this;
+            testBtn.textContent = 'Testing...';
+            testBtn.disabled = true;
+            
+            const resultContent = document.getElementById('resultContent');
+            resultContent.innerHTML = '';
+            
+            function addLog(message, type = 'info') {
+                const logEntry = document.createElement('div');
+                logEntry.className = `log-entry ${type}`;
+                logEntry.innerHTML = `
+                    <div class="timestamp">${new Date().toLocaleTimeString()}</div>
+                    <div>${message}</div>
+                `;
+                resultContent.appendChild(logEntry);
+            }
+            
+            addLog('Testing server endpoints after fixing the route-controller mismatch...', 'info');
+            
+            // Test endpoints
+            const endpoints = [
+                { url: 'http://localhost:5000/', method: 'GET', name: 'Root endpoint' },
+                { url: 'http://localhost:5000/health', method: 'GET', name: 'Health endpoint' }
+            ];
+            
+            for (const endpoint of endpoints) {
+                try {
+                    const response = await fetch(endpoint.url, { method: endpoint.method });
+                    addLog(`${endpoint.name}: Status ${response.status}`, response.status === 200 ? 'success' : 'error');
+                    
+                    if (response.status === 200) {
+                        const text = await response.text();
+                        addLog(`Response: ${text}`, 'success');
+                    }
+                } catch (error) {
+                    addLog(`${endpoint.name}: Error - ${error.message}`, 'error');
+                }
+            }
+            
+            testBtn.textContent = 'Test Complete';
+            testBtn.disabled = false;
+        });
+    </script>
+</body>
+</html>

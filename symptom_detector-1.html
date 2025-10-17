@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Strokify · Symptom Detector</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="Assets/js/sd.js" defer></script>
+    <link rel="stylesheet" href="Assets/css/style.css" />
+    <script src="Assets/js/language-switcher.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <link id="favicon" rel="icon" href="./Assets/img/icon/strokify_icon_no_title.png" type="image/png">
+</head>
+
+<body>
+    <div class="main-container symptom-wrap">
+        <!-- top bar -->
+        <header class="sd-appbar">
+            <button class="sd-icon-btn" type="button" onclick="history.back()" aria-label="Go back">‹</button>
+            <h1 data-key="symptomDetectorTitle">Symptom Detector</h1>
+            <span class="sd-appbar-spacer" aria-hidden="true"></span>
+        </header>
+
+        <!-- cute header area -->
+        <section class="sd-hero">
+            <img src="Assets/img/feature/symptom_detector.png" alt="" class="sd-hero-mascot" />
+            <div class="sd-hero-bubble" data-key="heroBubbleStep1">Let’s start with your general questions …</div>
+        </section>
+
+        <!-- steps -->
+        <div class="sd-steps">
+            <div class="sd-steps-row">
+                <span data-key="stepProgressStep1">Step 1/3</span>
+                <span data-key="stepTitleStep1">General Questions</span>
+            </div>
+            <div class="sd-progress">
+                <div class="sd-progress-fill" style="width:33.33%"></div>
+            </div>
+        </div>
+
+        <!-- form card -->
+        <form id="lifestyleForm" class="sd-card" novalidate>
+            <!-- HEIGHT / WEIGHT / BMI -->
+            <div class="sd-field-group">
+                <label class="sd-field">
+                    <span class="sd-label">
+                        <img src="Assets/img/sd/age_icon.png" alt="" />
+                        <span data-key="yourAge">Your Age</span>
+                        <span class="sd-meta">
+                            <button type="button" class="info-btn" aria-describedby="tip-age"
+                                aria-label="Info about age">ℹ</button>
+                            <span class="sd-required">*</span>
+                        </span>
+                    </span>
+                    <div class="sd-input-unit">
+                        <input type="number" inputmode="decimal" step="1" min="20" max="100" name="age" id="ageInput"
+                            placeholder="e.g., 20" required />
+                    </div>
+                </label>
+                <div id="tip-age" data-key="tipAge" class="info-tooltip" hidden>
+                    Fill in your age in (years old).
+                </div>
+
+                <label class="sd-field">
+                    <span class="sd-label">
+                        <img src="Assets/img/sd/height_icon.png" alt="" />
+                        <span data-key="yourHeight">Your Height</span>
+                        <span class="sd-meta">
+                            <button type="button" class="info-btn" aria-describedby="tip-height"
+                                aria-label="Info about height">ℹ</button>
+                            <span class="sd-required">*</span>
+                        </span>
+                    </span>
+                    <div class="sd-input-unit">
+                        <input type="number" inputmode="decimal" step="0.01" min="0.5" max="2.5" name="height_m"
+                            id="heightInput" placeholder="e.g., 1.50" required />
+                        <span class="sd-unit" data-key="meter">m</span>
+                    </div>
+                </label>
+                <div id="tip-height" data-key="tipHeight" class="info-tooltip" hidden>
+                    Fill in your height in meter (m).
+                </div>
+
+                <label class="sd-field">
+                    <span class="sd-label">
+                        <img src="Assets/img/sd/weight_icon.png" alt="" />
+                        <span data-key="yourWeight">Your Weight</span>
+                        <span class="sd-meta">
+                            <button type="button" class="info-btn" aria-describedby="tip-weight"
+                                aria-label="Info about weight">ℹ</button>
+                            <span class="sd-required">*</span>
+                        </span>
+                    </span>
+                    <div class="sd-input-unit">
+                        <input type="number" inputmode="decimal" step="0.1" min="20" max="250" name="weight_kg"
+                            id="weightInput" placeholder="e.g., 40" required />
+                        <span class="sd-unit" data-key="kilogram">kg</span>
+                    </div>
+                </label>
+                <div id="tip-weight" data-key="tipWeight" class="info-tooltip" hidden>
+                    Fill in your weight in kilograms (kg).
+                </div>
+
+                <div class="sd-bmi-row">
+                    <span class="sd-label">
+                        <img src="Assets/img/sd/bmi_icon.png" alt="" />
+                        <span data-key="yourBMI">Your BMI</span>
+                    </span>
+                    <output id="bmiChip" class="sd-chip">—</output>
+                </div>
+
+                <fieldset class="sd-qa">
+                    <legend class="visually-hidden" data-key="lsQ">Lifestyle Questions</legend>
+                    <div class="sd-q">
+                        <label class="sd-q-label">
+                            <img src="Assets/img/sd/sex_icon.png" alt="" />
+                            <span data-key="genderQuestion">What is your gender?</span>
+                            <span class="sd-meta">
+                                <button type="button" class="info-btn" aria-describedby="tip-sex"
+                                    aria-label="Info about sex">ℹ</button>
+                                <span class="sd-required">*</span>
+                        </label>
+                        <!-- dara change here -->
+                        <select name="sex" required style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">
+                            <option value="" disabled selected data-key="selectOption" style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">Select options</option>
+                            <option value="1" data-key="male" style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">Male</option>
+                            <option value="0" data-key="female" style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">Female</option>
+                        </select>
+                    </div>
+                    <div id="tip-sex" data-key="tipSex" class="info-tooltip" hidden>
+                        Choose the option that corresponds to your sex.
+                    </div>
+
+                    <div class="sd-q">
+                        <label class="sd-q-label">
+                            <img src="Assets/img/sd/marital.png" alt="" />
+                            <span data-key="maritalQuestion">What is your current marital status?</span>
+                            <span class="sd-meta">
+                                <button type="button" class="info-btn" aria-describedby="tip-marital"
+                                    aria-label="Info about marital">ℹ</button>
+                                <span class="sd-required">*</span>
+                        </label>
+                        <!-- dara change here -->
+                        <select name="marital" required style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">
+                            <option value="" disabled selected data-key="selectOption" style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">Select options</option>
+                            <option value="0" data-key="neverMarried" style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">Never Married</option>
+                            <option value="1" data-key="everMarried" style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">Ever Married</option>
+                        </select>
+                    </div>
+                    <div id="tip-marital" data-key="tipMarital" class="info-tooltip" hidden>
+                        Choose the option that corresponds to your marital state.
+                    </div>
+                </fieldset>
+
+
+            </div>
+
+            <!-- actions -->
+            <div class="sd-actions">
+                <a class="sd-btn sd-btn-ghost" href="index.html" data-key="backBtn">Back</a>
+                <button class="sd-btn sd-btn-primary" href="symptom_detector-2.html" type="submit" data-key="nextBtn" style="font-family: 'Poppins','Kantumruy Pro', sans-serif;">Next</button>
+            </div>
+        </form>
+    </div>
+    <!-- Info Modal -->
+    <div id="infoModal" class="info-modal" hidden>
+        <div class="info-backdrop" data-close></div>
+        <div class="info-dialog" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+            <button class="info-close" type="button" aria-label="Close" data-close>×</button>
+            <div class="info-content" id="infoContent"></div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

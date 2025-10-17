@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications · Strokify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link id="favicon" rel="icon" href="./Assets/img/icon/strokify_icon_no_title.png" type="image/png">
+    <script src="Assets/js/language-switcher.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FFF2F6;
+            --card-gradient: linear-gradient(to bottom, #FEBCD0 -17%, #C32235 64%);
+            --pink-light: #FFDDE2;
+            --pink-lighter: #FFE8ED;
+            --text-dark: #333;
+            --text-light: #fff;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --red-primary: #C32235;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', "Kantumruy Pro", sans-serif;
+            background: var(--bg-color);
+            min-height: 100vh;
+        }
+
+        .khmerfont {
+            font-family: 'Poppins', "Kantumruy Pro", sans-serif;
+        }
+
+        .main-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .header {
+            /* background: var(--card-gradient); */
+            background: var(--red-primary);
+            padding: 15px;
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-arrow {
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .back-arrow:hover {
+            transform: translateX(-5px);
+        }
+
+        .header h1 {
+            font-size: 18px;
+            font-weight: 600;
+            flex: 1;
+            text-align: center;
+            margin-left: 35px;
+        }
+
+        .notification-count {
+            background: white;
+            color: var(--red-primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .notifications-container {
+            padding: 20px;
+        }
+
+        .notification-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--red-primary);
+            background: white;
+            color: var(--red-primary);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: var(--red-primary);
+            color: white;
+            border-color: transparent;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .notification-item {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid transparent;
+        }
+
+        .notification-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .notification-item.unread {
+            background: var(--pink-lighter);
+            border-left-color: var(--red-primary);
+        }
+
+        .notification-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .icon-health {
+            background: linear-gradient(135deg, #FEBCD0, #FFE8ED);
+        }
+
+        .icon-reminder {
+            background: linear-gradient(135deg, #FFD6A5, #FFF3E0);
+        }
+
+        .icon-achievement {
+            background: linear-gradient(135deg, #A8E6CF, #E0F7E9);
+        }
+
+        .icon-system {
+            background: linear-gradient(135deg, #B4D4FF, #E8F1FF);
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 5px;
+        }
+
+        .notification-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 16px;
+
+        }
+
+        .notification-time {
+            font-size: 12px;
+            color: #999;
+            white-space: nowrap;
+        }
+
+        .notification-message {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-top: 5px;
+        }
+
+        .notification-badge {
+            display: inline-block;
+            background: var(--red-primary);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .empty-state i {
+            font-size: 60px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .empty-state p {
+            font-size: 16px;
+        }
+
+        /* 
+        .mark-all-read {
+            background: white;
+            color: var(--red-primary);
+            border: 2px solid var(--red-primary);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: block;
+            width: 100%;
+            transition: all 0.3s ease;
+        } */
+
+        .mark-all-read:hover {
+            background: var(--red-primary);
+            color: white;
+            border-color: transparent;
+        }
+
+        .sd-icon-btn {
+            border: none;
+            background: transparent;
+            font-size: 38px;
+            line-height: 1;
+            cursor: pointer;
+            color: white;
+        }
+
+        .symptom-wrap {
+            max-width: 480px;
+            background: #fff;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container symptom-wrap">
+        <div class="header">
+            <div class="header-content">
+                <button class="sd-icon-btn" type="button" onclick="history.back()" aria-label="Go back">‹</button>
+                <h1 data-key="notificationsTitle">Notifications</h1>
+                <span class="notification-count" data-key="newCount">3 New</span>
+            </div>
+        </div>
+        <div class="notifications-container">
+            <div class="notification-filters">
+                <button class="filter-btn active khmerfont" data-key="all">All</button>
+                <button class="filter-btn mark-all-read khmerfont" data-key="markAllRead">Mark All as Read</button>
+            </div>
+
+
+            <div class="notifications-list">
+                <div class="notification-item unread">
+                    <div class="notification-icon icon-health">
+                        ❤️
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <span class="notification-title">
+                                <span data-key="healthReminderTitle">Health Reminder</span>
+                                <span class="notification-badge" data-key="new">NEW</span>
+                            </span>
+                            <span class="notification-time"> <span>5</span> <span data-key="minAgo">min
+                                    ago</span></span>
+                        </div>
+                        <p class="notification-message" data-key="healthReminderMsg">
+                            Time for your daily blood pressure check! Don't forget to log your readings.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="notification-item unread">
+                    <div class="notification-icon icon-achievement">
+                        💎
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <span class="notification-title">
+                                <span data-key="diamondsEarnedTitle">Diamonds Earned!</span>
+                                <span class="notification-badge" data-key="new">NEW</span>
+                            </span>
+                            <span class="notification-time"><span>1</span> <span data-key="hourAgo">hour
+                                    ago</span></span>
+                        </div>
+                        <p class="notification-message" data-key="diamondsEarnedMsg">
+                            Congratulations! You've earned 50 diamonds for completing your weekly health tasks.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="notification-item unread">
+                    <div class="notification-icon icon-reminder">
+                        💊
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <span class="notification-title">
+                                <span data-key="takeMedicationTitle">Take Medication</span>
+                                <span class="notification-badge" data-key="new">NEW</span>
+                            </span>
+                            <span class="notification-time"><span>2</span> <span data-key="hourAgo">hours ago</span>
+                            </span>
+                        </div>
+                        <p class="notification-message" data-key="takeMedicationMsg">
+                            It's time to take your afternoon medication. Stay consistent with your health routine!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="notification-item">
+                    <div class="notification-icon icon-system">
+                        ℹ️
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <span class="notification-title" data-key="newHealthArticleTitle">New Health Article</span>
+                            <span class="notification-time"> <span>1</span> <span data-key="dayAgo">day
+                                    ago</span></span>
+                        </div>
+                        <p class="notification-message" data-key="newHealthArticleMsg">
+                            Check out our latest article: "Understanding Stroke Prevention - 10 Essential Tips"
+                        </p>
+                    </div>
+                </div>
+
+                <div class="notification-item">
+                    <div class="notification-icon icon-health">
+                        🏥
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <span class="notification-title" data-key="appointmentScheduledTitle">Appointment
+                                Scheduled</span>
+                            <span class="notification-time"><span>1</span> <span data-key="dayAgo">day ago</span></span>
+                        </div>
+                        <p class="notification-message" data-key="appointmentScheduledMsg">
+                            Your appointment at Royal Phnom Penh Hospital has been confirmed for October 20, 2025 at
+                            10:00 AM.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="notification-item">
+                    <div class="notification-icon icon-achievement">
+                        🎯
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <span class="notification-title" data-key="milestoneReachedTitle">Milestone Reached!</span>
+                            <span class="notification-time"> <span>3</span> <span data-key="dayAgo">days
+                                    ago</span></span>
+                        </div>
+                        <p class="notification-message" data-key="milestoneReachedMsg">
+                            Amazing! You've maintained excellent health status for 30 consecutive days. Keep it up!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="notification-item">
+                    <div class="notification-icon icon-system">
+                        🔄
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <span class="notification-title" data-key="appUpdateAvailableTitle">App Update
+                                Available</span>
+                            <span class="notification-time"><span>5</span> <span data-key="dayAgo">days
+                                    ago</span></span>
+                        </div>
+                        <p class="notification-message" data-key="appUpdateAvailableMsg">
+                            A new version of Strokify is available with improved features and bug fixes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const markAllReadBtn = document.querySelector('.mark-all-read');
+        const notificationItems = document.querySelectorAll('.notification-item');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        markAllReadBtn.addEventListener('click', () => {
+            notificationItems.forEach(item => {
+                item.classList.remove('unread');
+                const badge = item.querySelector('.notification-badge');
+                if (badge) badge.remove();
+            });
+            document.querySelector('.notification-count').textContent = '0 New';
+        });
+
+        notificationItems.forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.remove('unread');
+                const badge = item.querySelector('.notification-badge');
+                if (badge) badge.remove();
+                updateNotificationCount();
+            });
+        });
+
+        function updateNotificationCount() {
+            const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+            document.querySelector('.notification-count').textContent = `${unreadCount} New`;
+        }
+    </script>
+</body>
+
+</html>
