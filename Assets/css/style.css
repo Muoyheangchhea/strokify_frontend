@@ -1,0 +1,1612 @@
+/*******************************/
+/* Global Styles and Variables */
+/*******************************/
+
+:root {
+    --bg-color: #FFF2F6;
+    --card-gradient: linear-gradient(to bottom, #FEBCD0 -17%, #C32235 64%);
+    --pink-light: #FFDDE2;
+    --text-dark: #333;
+    --text-light: #fff;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.khmerBold {
+    font-family: "Kantumruy Pro", sans-serif;
+    font-weight: 400;
+}
+
+body {
+    font-family: 'Poppins', "Kantumruy Pro", sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    padding: 0;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Common Section Styles */
+.section-title {
+    font-size: 1.1em;
+    font-weight: 550;
+    margin: 0px 15px 5px 15px;
+    color: var(--text-dark);
+}
+
+/* Visibility Utility */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+    border: 0;
+    padding: 0;
+    margin: -1px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/***********************************/
+/* Main Page Layout and Components */
+/***********************************/
+
+/* Top Header */
+.top-header-bg {
+    width: 100%;
+    background: var(--card-gradient);
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    padding: 20px 20px 100px 20px;
+    box-sizing: border-box;
+    color: var(--text-light);
+    position: relative;
+    z-index: 1;
+}
+
+.header-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.status-icons .icon-small {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.header-greeting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid var(--text-light);
+}
+
+.greeting-text h2 {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.greeting-text p {
+    margin: 0;
+    font-size: 0.8em;
+    font-weight: 400;
+    opacity: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.notifications {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-top: -10px;
+}
+
+.notifications .gems {
+    margin-right: -5px;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+
+}
+
+.notifications .bell {
+    position: relative;
+    font-size: 1.3em;
+    margin-bottom: -2px;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #f00;
+    color: var(--text-light);
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 0.7em;
+    line-height: 1;
+}
+
+/**********************/
+/* Health Status Card */
+/**********************/
+
+/* Health Status Card */
+.health-card {
+    background-color: var(--text-light);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 15px;
+    margin: -90px 20px 12px 20px;
+    position: relative;
+    z-index: 100;
+    font-size: 14px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h3 {
+    margin: 5px;
+}
+
+
+.health-card h3 {
+    font-size: 18px;
+    font-weight: 550;
+    /* Sets the font weight for the h3 element */
+}
+
+.health-card h3 strong,
+.health-card strong {
+    font-weight: 550;
+    /* Sets the font weight for strong elements inside the card */
+}
+
+.excellent {
+    color: #4CAF50;
+}
+
+.see-more-btn {
+    background-image: linear-gradient(to bottom, #FEBCD0 -19%, #e33347 64%);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.health-metrics {
+    margin-top: 15px;
+}
+
+.metric-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.metric-item img {
+    width: 23px;
+    height: 23px;
+    margin-right: 10px;
+}
+
+.metric-item p {
+    margin: 0;
+    font-size: 1em;
+    color: var(--text-dark);
+}
+
+.brain-img {
+    position: absolute;
+    top: 35px;
+    right: 5px;
+    width: 130px;
+}
+
+/********************/
+/* Features Section */
+/********************/
+
+/* Features Section */
+.health-content-section {
+    padding: 0 20px;
+}
+
+.health-content-wrapper {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.health-content-section {
+    padding: 0;
+}
+
+.content-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.content-card-link {
+    text-decoration: none;
+    display: flex;
+    width: calc(33.33% - 10px);
+    box-sizing: border-box;
+    min-width: 100px;
+    /* Ensure the link itself is centered inside the flex container */
+    align-items: center;
+    justify-content: center;
+}
+
+.content-card {
+    background-color: var(--text-light);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* Card width should be 100% of its parent link */
+    width: 100%;
+    justify-content: center;
+    border: 1px solid #C3223F;
+    background: radial-gradient(circle at top, #FFFFFF 1%, #FFC2D4 180%);
+}
+
+.content-card img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+.lifesyn-card img {
+    width: 90px;
+    height: 73px;
+    object-fit: contain;
+    margin-bottom: 0px;
+}
+
+.content-card p {
+    font-size: 0.6em;
+    font-weight: 600;
+    color: #C3223F;
+    margin: 0px;
+}
+
+/******************************/
+/* Healthcare & News Sections */
+/******************************/
+
+/* Healthcare Contents */
+.healthcare-contents {
+    padding: 0 20px;
+}
+
+.banner-img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.carousel-container {
+    padding: 0 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.news-list {
+    display: flex;
+    overflow-x: scroll;
+    gap: 15px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    .news-link {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-shrink: 0;
+    }
+
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.news-list::-webkit-scrollbar {
+    display: none;
+}
+
+.news-card {
+    min-width: 150px;
+    scroll-snap-align: start;
+    background-color: var(--text-light);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.news-card img {
+    width: 390px;
+    height: 135px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.news-card p {
+    /* Style to truncate text with an ellipsis */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    /* Limits the text to two lines */
+
+    /* Ensure the text is readable and aligned */
+    font-size: 0.85em;
+    font-weight: 500;
+    color: #333;
+    text-align: left;
+    margin: 10px;
+    /* Adjust padding as needed */
+}
+
+/* Dots Navigation */
+.carousel-dots {
+    text-align: center;
+    margin-top: 0px;
+}
+
+.dot {
+    height: 6px;
+    width: 6px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active {
+    background-color: #717171;
+}
+
+/********************************/
+/* Hospital and Clinic Sections */
+/********************************/
+
+/* Hospital and Clinic Sections */
+.hospital-card-background {
+    background: white;
+    border-radius: 20px;
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.hospital-carousel-container {
+    display: flex;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.hospital-list {
+    display: flex;
+    gap: 15px;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.hospital-list::-webkit-scrollbar {
+    display: none;
+}
+
+.hospital-button-link {
+    flex-shrink: 0;
+    width: calc(33.33% - 10px);
+    scroll-snap-align: start;
+    text-decoration: none;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.hospital-button-link img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.hospital-button-link p {
+    text-align: center;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: #333;
+    margin-top: 0;
+}
+
+.carousel-arrow {
+    background-color: transparent;
+    border: none;
+    color: #C32235;
+    border-radius: 0;
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
+    min-height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+
+/*************************/
+/* Symptom Detector Page */
+/*************************/
+
+/* uses vars from style.css */
+
+/* layout */
+.symptom-wrap {
+    max-width: 480px;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.sd-appbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: #C32235;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.sd-appbar h1 {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 600;
+    color: white;
+}
+
+.sd-icon-btn {
+    border: none;
+    background: transparent;
+    font-size: 38px;
+    line-height: 1;
+    cursor: pointer;
+    color: white;
+}
+
+.sd-appbar-spacer {
+    width: 28px;
+}
+
+.sd-hero {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: #fff2f6;
+}
+
+.sd-hero-mascot {
+    width: 84px;
+    height: auto
+}
+
+.sd-hero-bubble {
+    flex: 1;
+    background: #fff;
+    border: 1.5px solid #C3223F;
+    border-radius: 16px;
+    padding: 10px 12px;
+    box-shadow: var(--shadow);
+    font-weight: 600;
+    color: #C3223F;
+    text-transform: lowercase;
+}
+
+.sd-steps {
+    padding: 0 16px 10px
+}
+
+.sd-steps-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 6px;
+    margin-top: 20px;
+}
+
+.sd-progress {
+    height: 4px;
+    background: #f1c9d3;
+    border-radius: 999px;
+    overflow: hidden
+}
+
+.sd-progress-fill {
+    height: 100%;
+    background: #C3223F
+}
+
+.sd-card {
+    margin: 10px 16px 90px;
+    padding: 12px;
+    border: 1px solid #C3223F;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    background: #fff;
+}
+
+/* inputs */
+.sd-field-group {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 6px
+}
+
+.sd-field {
+    display: block
+}
+
+.sd-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.sd-label img {
+    width: 23px;
+    height: 23px;
+    object-fit: contain
+}
+
+.sd-required {
+    color: #C3223F;
+    margin-left: 4px
+}
+
+.sd-input-unit {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    border: 1px solid #C3223F;
+    padding: 8px 10px;
+    border-radius: 999px;
+    gap: 8px;
+}
+
+.sd-input-unit input {
+    appearance: textfield;
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 14px;
+    padding: 2px 4px;
+}
+
+.sd-unit {
+    font-weight: 600;
+    color: #777
+}
+
+.sd-bmi-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.sd-chip {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #e7f6ea;
+    color: #1b7f2a;
+    font-weight: 700;
+    min-width: 88px;
+    text-align: center;
+}
+
+/* questions */
+.sd-qa {
+    display: grid;
+    gap: 12px;
+    border: 0;
+    padding: 0;
+    margin-top: 8px
+}
+
+.sd-q {
+    border-top: 1px dashed #C3223F;
+    padding-top: 12px
+}
+
+.sd-q-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.sd-q-label img {
+    width: 23px;
+    height: 23px;
+    object-fit: contain
+}
+
+.sd-q select {
+    width: 100%;
+    border: 1px solid #C3223F;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-size: 14px;
+    background: #fff;
+    color: #333;
+}
+
+/* actions */
+.sd-actions {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    padding: 14px;
+    background: linear-gradient(#ffffffcc, #ffffff);
+    margin: 12px -12px -12px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.sd-btn {
+    border-radius: 999px;
+    padding: 12px 26px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    cursor: pointer;
+}
+
+.sd-btn-ghost {
+    background: #FFE2EA;
+    color: #C3223F
+}
+
+.sd-btn-primary {
+    background-color: #C3223F;
+    color: #fff;
+}
+
+.sd-q-first {
+    border-top: none dashed #C3223F;
+    padding-top: 0px
+}
+
+.sd-q-first select {
+    width: 100%;
+    border: 1px solid #C3223F;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-size: 14px;
+    background: #fff;
+    color: #333;
+}
+
+#glucoseGroup {
+    margin-top: 12px;
+}
+
+/******************/
+/* Fast Info Page */
+/******************/
+
+/* fast_info.css */
+/* Uses variables from style.css */
+
+body {
+    background-color: var(--bg-color);
+}
+
+.main-container {
+    padding-bottom: 20px;
+}
+
+.sd-appbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: FFDFE7;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.sd-appbar h1 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 600;
+    color: white;
+}
+
+.sd-icon-btn {
+    border: none;
+    background: transparent;
+    font-size: 38px;
+    line-height: 1;
+    cursor: pointer;
+    color: white;
+}
+
+.sd-appbar-spacer {
+    width: 28px;
+}
+
+/* info card */
+.info-card {
+    background-color: var(--text-light);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 15px;
+    font-size: 14px;
+    position: relative;
+    z-index: 3;
+    transform: translateY(12px);
+}
+
+/* Updated intro-card styles - primarily for inner content */
+.intro-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+}
+
+.intro-card-wrapper {
+    position: relative;
+    margin: 20px 20px 15px 20px;
+    padding-bottom: 20px;
+    z-index: 2;
+}
+
+/* Style for the background overlay card */
+.intro-card-background-overlay {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    width: 105%;
+    height: 45%;
+    background: linear-gradient(to bottom, #FEBCD0 -17%, #C32235 64%);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* Keep these unchanged unless further adjustments are needed */
+.intro-mascot {
+    width: 80px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.intro-card p {
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.intro-card p strong {
+    color: #C3223F;
+}
+
+.fast_test_meaning {
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* info card */
+
+.symptom-cards-container {
+    margin: 0 20px;
+    border: 1px solid #C3223F;
+    border-radius: 15px;
+}
+
+.symptom-card-single {
+    background-color: var(--text-light);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    padding: 15px;
+}
+
+.symptom-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+.symptom-icon img {
+    width: 90px;
+    height: auto;
+    flex-shrink: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.symptom-content h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #C3223F;
+    margin-left: 18px;
+}
+
+.symptom-content p {
+    margin: 0;
+    color: #555;
+    line-height: 1.4;
+    font-size: 14px;
+    margin-left: 18px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eea0ae;
+    margin: 0;
+    /* Remove default margin */
+}
+
+.time-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #C3223F;
+    background: white;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.time-card img {
+    width: 80px;
+    height: auto;
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+
+.time-content {
+    flex-grow: 1;
+}
+
+.time-content h3 {
+    margin: 0 0 5px 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #C3223F;
+}
+
+.time-content p {
+    margin: 0;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+.action-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.sd-btn {
+    width: 140px;
+    border-radius: 999px;
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    cursor: pointer;
+}
+
+.done-btn {
+    background: #C3223F;
+    color: white;
+}
+
+.hospital-btn {
+    background: #C3223F;
+    color: #fff;
+}
+
+/************/
+/* Hospital */
+/************/
+
+/* Card Wrapper for Overlapping Effect */
+.main-card-wrapper {
+    position: relative;
+    margin: 20px 20px 15px 20px;
+    padding-bottom: 10px;
+    z-index: 2;
+}
+
+/* Background Overlay Card */
+.main-card-background {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    width: 105%;
+    height: 45%;
+    background: linear-gradient(to bottom, #FEBCD0 -17%, #C32235 64%);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* Main Content Card */
+.main-content-card {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    font-size: 14px;
+    position: relative;
+    z-index: 3;
+    transform: translateY(12px);
+    display: flex;
+    align-items: flex-start;
+    /* gap: 15px; */
+}
+
+.card-icon-img {
+    width: 85px;
+    height: auto;
+    flex-shrink: 0;
+    margin-left: 5px;
+}
+
+.card-text-content {
+    flex-grow: 1;
+}
+
+.card-text-content h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    font-weight: 550;
+    color: #C32235;
+    margin-left: 18px;
+}
+
+.card-text-content p {
+    margin: 0;
+    color: black;
+    line-height: 1.4;
+    font-size: 14px;
+    margin-left: 18px;
+}
+
+/* Map Section */
+.map-container {
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid #C3223F;
+    margin: 15px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+/* Hospital Card Container */
+.hospital-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    margin: 0 20px 15px 20px;
+    border: 1px solid #C3223F;
+}
+
+/* Hospital Image */
+.hospital-image img {
+    width: 90px;
+    height: 90px;
+    border-radius: 15px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Container for details and button */
+.hospital-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    align-self: stretch;
+    /* Makes the wrapper as tall as the card */
+}
+
+/* Hospital Details */
+.hospital-details {
+    flex-grow: 1;
+    /* Pushes the button downwards if space allows */
+}
+
+.hospital-details h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    white-space: nowrap;
+    /* Prevents the text from wrapping */
+    overflow: hidden;
+    /* Hides any overflowing text */
+    text-overflow: ellipsis;
+    /* Adds an ellipsis (...) to clipped text */
+}
+
+.hospital-details .details-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.hospital-details .details-row i {
+    color: #C3223F;
+    font-size: 12px;
+}
+
+.hospital-details .details-row p {
+    font-size: 12px;
+    color: #555;
+    margin: 0;
+}
+
+/* Call Button */
+.call-btn {
+    width: 80px;
+    height: 40px;
+    border: none;
+    background-color: #C3223F;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 999px;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-top: -75px;
+
+    /********************************/
+    /* Responsive & Utility Classes */
+    /********************************/
+
+    /* Laptop/Tablet Responsiveness */
+    @media (min-width: 768px) {
+        .main-container {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-header-bg {
+            padding-top: 40px;
+            padding-bottom: 150px;
+            border-radius: 40px;
+        }
+
+        .health-card {
+            margin: -100px 40px 40px 40px;
+        }
+
+        .content-row,
+        .hospitals-section {
+            padding: 0 40px;
+        }
+
+        .section-title {
+            margin: 40px 40px 20px 40px;
+        }
+
+        .hospitals-list {
+            overflow-x: visible;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hospital-card {
+            min-width: 200px;
+        }
+
+        .nav-arrow {
+            display: none;
+        }
+    }
+
+    /* Responsive adjustments for phones */
+    @media (max-width: 768px) {
+        .news-card {
+            min-width: 100%;
+        }
+    }
+
+    @media (min-width:768px) {
+        .symptom-wrap {
+            margin: 0 auto
+        }
+    }
+
+    /* BMI status chips */
+    .sd-chip {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-weight: 700;
+        min-width: 100px;
+        text-align: center;
+        background: #f2f2f2;
+        color: #333;
+    }
+
+    .bmi-ok {
+        background: #e7f6ea;
+        color: #1b7f2a;
+    }
+
+    .bmi-warn {
+        background: #fff3cd;
+        color: #8a6d3b;
+    }
+
+    .bmi-bad {
+        background: #fde2e2;
+        color: #b71c1c;
+    }
+}
+
+/* Ensure the card doesn't clip absolutely positioned children */
+.sd-card {
+    overflow: visible;
+}
+
+/* The field block is a positioning context */
+.sd-field,
+.sd-q,
+.sd-bmi-row {
+    position: relative;
+}
+
+/* Tooltip styling and stacking */
+.info-tooltip {
+    position: absolute;
+    right: 0;
+    top: 28px;
+    /* drop under the label line */
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, .15);
+    width: 250px;
+    padding: 10px;
+    font-size: .85rem;
+    z-index: 10000;
+    /* sit on top of everything */
+}
+
+/* Make hidden really hidden */
+[hidden] {
+    display: none !important;
+}
+
+/* Keep ℹ + * aligned top-right within label */
+.sd-field .sd-label,
+.sd-q .sd-q-label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sd-meta {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Perfect circular info button */
+.info-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #989898;
+    border-radius: 50%;
+    color: #989898;
+    background-color: #FFFFFF;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+
+
+}
+
+.info-btn:hover {
+    color: #C3223F;
+    border-color: #C3223F;
+}
+
+
+/* Centered info modal */
+.info-modal[hidden] {
+    display: none !important;
+}
+
+.info-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: grid;
+    place-items: center;
+}
+
+.info-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .25);
+    backdrop-filter: blur(6px);
+}
+
+.info-dialog {
+    position: relative;
+    width: min(90vw, 420px);
+    max-height: 80vh;
+    overflow: auto;
+    background: #FFE2EA;
+    border-radius: 16px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, .25);
+    padding: 16px 18px 18px;
+    animation: info-pop .18s ease-out;
+}
+
+@keyframes info-pop {
+    from {
+        transform: translateY(6px) scale(.98);
+        opacity: .0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.info-close {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: #FFE2EA;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 26px;
+
+}
+
+.info-close:hover {
+    border-color: #C3223F;
+    color: #C3223F;
+}
+
+.info-content {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: .95rem;
+    color: #333;
+    line-height: 1.45;
+}
+
+/* Prevent background scrolling while modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
+.result-wrap {
+    max-width: 480px;
+    background: #fff;
+    border-radius: 20px;
+    margin: 0 auto;
+}
+
+.result-card {
+    background: #fff;
+    border: 1.5px solid #C3223F;
+    border-radius: 16px;
+    padding: 22px 18px;
+    margin: 16px;
+    text-align: center;
+}
+
+.result-card h3 {
+    margin: 0 0 10px 0;
+    font-weight: 400;
+    color: #000000;
+    font-size: 14px;
+}
+
+.risk-row {
+    margin-top: 6px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+}
+
+.risk-value {
+    color: #1b7f2a;
+}
+
+/* will be overridden for moderate/high */
+.risk-chip {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    margin-top: 10px;
+    border: 1.5px solid transparent;
+    color: #333;
+}
+
+.risk-chip.normal {
+    color: #2e7d32;
+    border-color: #2e7d32;
+}
+
+.risk-chip.moderate {
+    color: #D4A21D;
+    border-color: #D4A21D;
+}
+
+.risk-chip.high {
+    color: #c62828;
+    border-color: #c62828;
+}
+
+.result-msg {
+    margin: 14px auto 0;
+    max-width: 32ch;
+    line-height: 1.5;
+    color: #333;
+    font-size: 14px;
+}
+
+.result-msg b.normalAccent {
+    color: #2e7d32;
+}
+
+.result-msg b.moderateAccent {
+    color: #D4A21D;
+}
+
+.result-msg b.highAccent {
+    color: #c62828;
+}
+
+/* tiny helper for the gauge */
+.gauge {
+    width: 200px;
+    display: block;
+    margin: 8px auto 12px;
+}
+
+.needle {
+    transform-origin: 70px 70px;
+    transition: transform .4s ease;
+}
+
+.gauge #needle {
+    transition: transform 300ms ease;
+}
+
+.sd-done-btn-ghost {
+    background-color: #C3223F;
+    color: #fff;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.gems {
+    position: relative;
+    cursor: pointer;
+}
+
+.bell {
+    cursor: pointer;
+}
+
+.gems .tooltip {
+    visibility: hidden;
+    opacity: 0;
+    width: 100px;
+    /* adjust */
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 3px 5px;
+    border-radius: 6px;
+    font-size: 9px;
+    position: absolute;
+    bottom: 100%;
+    /* above the diamond */
+    left: 78%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
+    z-index: 2000;
+}
+
+/* small triangle arrow */
+.gems .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    /* bottom of tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+    z-index: 10;
+}
+
+.gems:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.language-switcher {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #C32235;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.language-switcher:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.language-switcher i {
+    font-size: 16px;
+}
+
+.lang-text {
+    font-weight: 600;
+}
+
+/* Add to header if needed */
+.header-greeting .notifications {
+    display: flex;
+    align-items: right;
+    gap: 8px;
+}
+
+.metric-item strong {
+    font-weight: bold;
+}
+
+html, body {
+  min-width: 428px;
+}
